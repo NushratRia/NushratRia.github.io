@@ -739,6 +739,8 @@ button:focus-visible {
     align-items: flex-end;
 
     justify-content: center;
+    /* padding-top: 130px; */
+    padding-right: 250px;
 }
 
 
@@ -748,9 +750,9 @@ button:focus-visible {
 
     position: absolute;
 
-    left: 50%;
+    left: 25%;
 
-    top: 50%;
+    top: 45%;
 
     width: 270px;
 
@@ -768,6 +770,7 @@ button:focus-visible {
             -50%,
             -46%
         );
+    
 }
 
 
@@ -775,7 +778,7 @@ button:focus-visible {
 
     position: relative;
 
-    z-index: 2;
+    z-index: 1;
 
     width: auto;
 
