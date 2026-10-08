@@ -1,2621 +1,5424 @@
 /* ==========================================================
+
    NUSHRAT JAHAN RIA — RESPONSIVE ACADEMIC PORTFOLIO
+
    Desktop / Laptop / Tablet / Mobile / Touch
+
 ========================================================== */
+
+
+
 
 
 /* ==========================================================
+
    01. TOKENS
+
 ========================================================== */
 
+
+
 :root {
+
     --bg: #f7f6f2;
+
     --paper: #ffffff;
+
     --surface: #efede7;
+
     --surface-2: #e8e6df;
 
+
+
     --ink: #202220;
+
     --muted: #656964;
+
     --faint: #969a94;
 
+
+
     --line: #d8d6cf;
+
     --line-dark: #bfc1bb;
 
+
+
     --sage-soft: #dfe6e1;
+
     --burgundy: #7c2638;
+
+
 
     --sidebar-width: 190px;
 
+
+
     --transition:
+
         220ms cubic-bezier(.2, .75, .2, 1);
+
 }
+
+
+
 
 
 [data-theme="dark"] {
+
     --bg: #000000;
+
     --paper: #1e201e;
+
     --surface: #252825;
+
     --surface-2: #2b2e2b;
 
+
+
     --ink: #f2f1ec;
+
     --muted: #b3b6b0;
+
     --faint: #7e847e;
 
+
+
     --line: #363a36;
+
     --line-dark: #4b504b;
 
+
+
     --sage-soft: #29332c;
+
     --burgundy: #d0919e;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    02. RESET
+
 ========================================================== */
 
+
+
 *,
+
 *::before,
+
 *::after {
+
     box-sizing: border-box;
+
 }
+
+
+
 
 
 html {
+
     width: 100%;
+
     min-width: 0;
+
     scroll-behavior: smooth;
+
     -webkit-text-size-adjust: 100%;
+
     text-size-adjust: 100%;
+
 }
+
+
+
 
 
 body {
+
     width: 100%;
+
     min-width: 0;
+
     min-height: 100vh;
 
+
+
     margin: 0;
+
     padding: 0;
+
+
 
     overflow-x: hidden;
 
+
+
     background: var(--bg);
+
     color: var(--ink);
 
+
+
     font-family:
+
         "Manrope",
+
         -apple-system,
+
         BlinkMacSystemFont,
+
         "Segoe UI",
+
         sans-serif;
 
+
+
     font-size: 14px;
+
     line-height: 1.6;
 
+
+
     transition:
+
         background-color .3s ease,
+
         color .3s ease;
+
 }
+
+
+
 
 
 main,
+
 section,
+
 article,
+
 div,
+
 aside,
+
 footer {
+
     min-width: 0;
+
 }
+
+
+
 
 
 img,
+
 svg,
+
 video,
+
 canvas,
+
 iframe {
+
     display: block;
+
     max-width: 100%;
+
 }
+
+
+
 
 
 img {
+
     height: auto;
+
 }
+
+
+
 
 
 a {
+
     color: inherit;
+
     text-decoration: none;
+
     overflow-wrap: anywhere;
+
 }
+
+
+
 
 
 button,
+
 input,
+
 textarea,
+
 select {
+
     font: inherit;
+
 }
+
+
+
 
 
 button {
+
     color: inherit;
+
 }
+
+
+
 
 
 p,
+
 h1,
+
 h2,
+
 h3,
+
 h4,
+
 h5,
+
 h6 {
+
     overflow-wrap: break-word;
+
 }
+
+
+
 
 
 ::selection {
+
     background: var(--sage-soft);
+
     color: var(--ink);
+
 }
+
+
+
 
 
 a:focus-visible,
+
 button:focus-visible {
+
     outline: 2px solid var(--burgundy);
+
     outline-offset: 4px;
+
 }
 
 
+
+
+
 /* ==========================================================
+
    03. CUSTOM CURSOR
+
 ========================================================== */
 
+
+
 .cursor-dot,
+
 .cursor-ring {
+
     position: fixed;
+
     left: 0;
+
     top: 0;
+
+
 
     z-index: 9999;
 
+
+
     border-radius: 50%;
+
     pointer-events: none;
 
+
+
     opacity: 0;
+
 }
+
+
+
 
 
 .cursor-dot {
+
     width: 6px;
+
     height: 6px;
+
     background: var(--ink);
+
 }
+
+
+
 
 
 .cursor-ring {
+
     width: 34px;
+
     height: 34px;
 
+
+
     border: 1px solid var(--ink);
+
 }
+
+
+
 
 
 /* Disable custom cursor on touch devices */
+
 @media (hover: none), (pointer: coarse) {
+
     .cursor-dot,
+
     .cursor-ring {
+
         display: none !important;
+
     }
+
 }
 
 
+
+
+
 /* ==========================================================
+
    04. THEME TOGGLE
+
 ========================================================== */
 
+
+
 .theme-toggle {
+
     position: fixed;
 
+
+
     top:
+
         max(
+
             18px,
+
             env(safe-area-inset-top)
+
         );
 
+
+
     right:
+
         max(
+
             18px,
+
             env(safe-area-inset-right)
+
         );
+
+
 
     z-index: 500;
 
+
+
     width: 42px;
+
     height: 42px;
 
+
+
     display: grid;
+
     place-items: center;
+
+
 
     padding: 0;
 
+
+
     border: 1px solid var(--line);
+
     border-radius: 50%;
 
+
+
     background: var(--bg);
+
     color: var(--ink);
 
+
+
     cursor: pointer;
+
 }
 
 
+
+
+
 /* ==========================================================
+
    05. LANDING
+
 ========================================================== */
 
+
+
 .landing {
+
     width: 100%;
+
     min-height: 100vh;
+
     min-height: 100svh;
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         var(--sidebar-width)
+
         minmax(0, 1fr);
 
+
+
     background: var(--bg);
+
 }
 
 
+
+
+
 /* ==========================================================
+
    06. SIDEBAR
+
 ========================================================== */
 
+
+
 .side-nav {
+
     position: fixed;
 
+
+
     top: 0;
+
     left: 0;
+
+
 
     z-index: 200;
 
+
+
     width: var(--sidebar-width);
+
     height: 100vh;
+
     height: 100svh;
 
+
+
     padding:
+
         clamp(110px, 17vh, 180px)
+
         15px
+
         40px
+
         34px;
 
+
+
     display: flex;
+
     flex-direction: column;
 
+
+
     background: var(--bg);
+
 }
+
+
+
 
 
 .side-nav > a {
+
     width: fit-content;
+
+
 
     margin-bottom: 24px;
 
+
+
     color: var(--ink);
 
+
+
     font-size: clamp(14px, 1vw, 16px);
+
     font-weight: 700;
+
 }
+
+
+
 
 
 .side-nav-group {
+
     display: flex;
+
     flex-direction: column;
+
+
 
     align-items: flex-start;
 
+
+
     gap: 3px;
+
 }
+
+
+
 
 
 .side-nav-group a {
+
     padding: 2px 0;
+
+
 
     color: var(--muted);
 
+
+
     font-size: clamp(14px, 1vw, 16px);
+
     line-height: 1.55;
 
+
+
     transition: color var(--transition);
+
 }
+
+
+
 
 
 .side-nav > a.active,
+
 .side-nav-group a.active,
+
 .side-nav-group a:hover {
+
     color: var(--burgundy);
+
 }
+
+
+
 
 
 .side-nav-group a.active {
+
     font-weight: 600;
+
 }
 
 
+
+
+
 /* ==========================================================
+
    07. LANDING MAIN
+
 ========================================================== */
+
+
 
 .landing-main {
+
     grid-column: 2;
 
+
+
     width: 100%;
+
     min-width: 0;
 
+
+
     padding:
+
         clamp(60px, 7vh, 90px)
+
         clamp(30px, 6vw, 110px)
+
         clamp(60px, 8vh, 90px)
+
         clamp(30px, 4vw, 60px);
+
 }
 
 
+
+
+
 /* ==========================================================
+
    08. HERO / IDENTITY
+
 ========================================================== */
 
+
+
 .identity-area {
+
     width: 100%;
 
+
+
     min-height:
+
         clamp(
+
             410px,
+
             58vh,
+
             530px
+
         );
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         minmax(0, 1fr)
+
         minmax(
+
             250px,
+
             min(32vw, 410px)
+
         );
+
+
 
     align-items: center;
 
+
+
     gap:
+
         clamp(
+
             20px,
+
             4vw,
+
             70px
+
         );
+
 }
+
+
+
 
 
 .identity-center {
+
     width: 100%;
+
     min-width: 0;
 
+
+
     text-align: center;
+
 }
+
+
+
 
 
 .signature {
+
     width:
+
         clamp(
+
             115px,
+
             12vw,
+
             155px
+
         );
 
+
+
     margin:
+
         0 auto
+
         clamp(18px, 2vw, 26px);
 
+
+
     transform: rotate(-4deg);
+
 }
+
+
+
 
 
 .signature img {
+
     width: 100%;
 
+
+
     filter:
+
         grayscale(1)
+
         brightness(0);
+
 }
+
+
+
 
 
 [data-theme="dark"] .signature img {
+
     filter:
+
         grayscale(1)
+
         brightness(0)
+
         invert(1);
+
 }
+
+
+
 
 
 .identity-center h1 {
+
     margin: 0;
 
+
+
     font-size:
+
         clamp(
+
             20px,
+
             1.8vw,
+
             25px
+
         );
 
+
+
     font-weight: 700;
+
+
 
     line-height: 1.25;
 
+
+
     letter-spacing: -.035em;
+
 }
+
+
+
 
 
 .role {
+
     margin: 7px auto 0;
+
+
 
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             12px,
+
             1.1vw,
+
             15px
+
         );
+
 }
+
+
+
 
 
 .research-line {
+
     max-width: 760px;
+
+
 
     margin: 5px auto 0;
 
+
+
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             11px,
+
             1vw,
+
             14px
+
         );
+
 }
+
+
+
 
 
 .research-line span {
+
     margin: 0 5px;
+
     color: var(--faint);
+
 }
+
+
+
 
 
 /* ==========================================================
+
    09. PORTRAIT
+
 ========================================================== */
 
+
+
 .portrait-area {
+
     position: relative;
+
+
 
     width: 100%;
 
+
+
     min-height:
+
         clamp(
+
             330px,
+
             42vw,
+
             430px
+
         );
+
+
 
     display: flex;
 
+
+
     align-items: flex-end;
+
     justify-content: center;
+
 }
+
+
+
 
 
 .portrait-area::before {
+
     content: "";
+
+
 
     position: absolute;
 
+
+
     left: 50%;
+
     top: 50%;
 
+
+
     width:
+
         clamp(
+
             190px,
+
             22vw,
+
             280px
+
         );
+
+
 
     aspect-ratio: 1 / 1;
 
+
+
     border-radius: 50%;
+
+
 
     background: var(--sage-soft);
 
+
+
     opacity: .4;
 
+
+
     transform:
+
         translate(-50%, -46%);
+
 }
+
+
+
 
 
 .portrait-area img {
+
     position: relative;
+
     z-index: 2;
 
+
+
     width: auto;
+
+
 
     max-width: 100%;
 
+
+
     max-height:
+
         clamp(
+
             320px,
+
             40vw,
+
             425px
+
         );
 
+
+
     object-fit: contain;
+
     object-position: bottom center;
 
+
+
     filter:
+
         saturate(.88)
+
         contrast(.98);
 
+
+
     transition:
+
         transform .45s ease;
+
 }
+
+
+
 
 
 @media (hover: hover) {
+
     .portrait-area:hover img {
+
         transform: translateY(-4px);
+
     }
+
 }
+
+
+
 
 
 /* ==========================================================
+
    10. ABOUT
+
 ========================================================== */
 
+
+
 .landing-bio {
+
     width:
+
         min(
+
             100%,
+
             1050px
+
         );
+
+
 
     margin:
+
         clamp(8px, 1vw, 15px)
+
         auto
+
         0;
 
+
+
     padding-inline:
+
         clamp(
+
             0px,
+
             1vw,
+
             12px
+
         );
+
+
 
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             13px,
+
             1.15vw,
+
             16px
+
         );
+
+
 
     line-height: 1.58;
 
+
+
     text-align: center;
+
 }
+
+
+
 
 
 .landing-bio p {
+
     margin: 0;
+
 }
+
+
+
 
 
 .landing-bio p + p {
+
     margin-top: 16px;
+
 }
+
+
+
 
 
 .landing-bio strong {
+
     color: var(--ink);
+
     font-weight: 700;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    11. AFFILIATIONS
+
 ========================================================== */
 
+
+
 .affiliation-strip {
+
     width:
+
         min(
+
             calc(100% - 40px),
+
             760px
+
         );
 
+
+
     margin:
+
         28px auto 0;
 
+
+
     padding:
+
         22px 0 18px;
+
+
 
     display: flex;
 
+
+
     align-items: center;
+
     justify-content: center;
+
+
 
     flex-wrap: wrap;
 
+
+
     gap:
+
         clamp(
+
             18px,
+
             3vw,
+
             28px
+
         );
 
+
+
     border-top: 1px solid var(--line);
+
 }
+
+
+
 
 
 .affiliation-strip a {
+
     opacity: .56;
 
+
+
     transition:
+
         opacity var(--transition),
+
         transform var(--transition);
+
 }
+
+
+
 
 
 @media (hover: hover) {
+
     .affiliation-strip a:hover {
+
         opacity: .9;
+
         transform: translateY(-2px);
+
     }
+
 }
+
+
+
 
 
 .affiliation-strip img {
+
     width: auto;
+
     height: auto;
 
+
+
     max-height:
+
         clamp(
+
             18px,
+
             2vw,
+
             24px
+
         );
 
+
+
     max-width:
+
         clamp(
+
             80px,
+
             9vw,
+
             105px
+
         );
+
+
 
     object-fit: contain;
 
+
+
     filter:
+
         grayscale(1)
+
         brightness(0);
+
 }
+
+
+
 
 
 [data-theme="dark"] .affiliation-strip img {
+
     filter:
+
         grayscale(1)
+
         brightness(0)
+
         invert(1);
+
 }
+
+
+
 
 
 /* ==========================================================
+
    12. SOCIAL LINKS
+
 ========================================================== */
 
+
+
 .landing-links {
+
     margin-top: 18px;
+
+
 
     display: flex;
 
+
+
     justify-content: center;
+
     align-items: center;
+
+
 
     flex-wrap: wrap;
 
+
+
     gap:
+
         12px
+
         clamp(
+
             16px,
+
             2.5vw,
+
             28px
+
         );
+
 }
+
+
+
 
 
 .landing-links a {
+
     position: relative;
+
+
 
     padding: 4px 0;
 
+
+
     color: var(--muted);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size:
+
         clamp(
+
             10px,
+
             .9vw,
+
             12px
+
         );
 
+
+
     white-space: nowrap;
+
 }
+
+
+
 
 
 .landing-links a::after {
+
     content: "";
+
+
 
     position: absolute;
 
+
+
     left: 0;
+
     bottom: 0;
 
+
+
     width: 18px;
+
     height: 1px;
+
+
 
     background: var(--line-dark);
 
+
+
     transition:
+
         width var(--transition),
+
         background var(--transition);
+
 }
+
+
+
 
 
 @media (hover: hover) {
 
+
+
     .landing-links a:hover {
+
         color: var(--burgundy);
+
     }
 
+
+
     .landing-links a:hover::after {
+
         width: 100%;
+
         background: var(--burgundy);
+
     }
+
 }
+
+
+
 
 
 /* ==========================================================
+
    13. POST-LANDING
+
 ========================================================== */
 
+
+
 .post-landing {
+
     width:
+
         calc(
+
             100% - var(--sidebar-width)
+
         );
 
+
+
     margin-left:
+
         var(--sidebar-width);
+
+
 
     min-width: 0;
 
+
+
     background: var(--bg);
+
 }
+
+
+
 
 
 .academic-page {
+
     width:
+
         min(
+
             calc(100% - 64px),
+
             960px
+
         );
+
+
 
     margin: 0 auto;
 
+
+
     padding:
+
         clamp(
+
             45px,
+
             6vw,
+
             65px
+
         )
+
         0
+
         34px;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    14. SECTIONS
+
 ========================================================== */
 
+
+
 .academic-section {
+
     width: 100%;
 
+
+
     padding:
+
         0 0
+
         clamp(
+
             35px,
+
             5vw,
+
             48px
+
         );
 
+
+
     scroll-margin-top: 30px;
+
 }
+
+
+
 
 
 .academic-section + .academic-section {
+
     padding-top: 4px;
+
 }
+
+
+
 
 
 .academic-heading {
+
     width: 100%;
 
+
+
     margin:
+
         0 0 15px;
+
+
 
     padding-bottom: 6px;
 
+
+
     border-bottom:
+
         1px solid
+
         var(--ink);
 
+
+
     font-size:
+
         clamp(
+
             16px,
+
             1.5vw,
+
             18px
+
         );
 
+
+
     font-weight: 600;
+
+
 
     line-height: 1.3;
 
+
+
     letter-spacing: -.02em;
+
 }
+
+
+
 
 
 .subsection-heading {
+
     margin:
+
         28px 0 7px;
+
+
 
     padding-bottom: 4px;
 
+
+
     border-bottom:
+
         1px solid
+
         var(--line-dark);
 
+
+
     font-size:
+
         clamp(
+
             13px,
+
             1.2vw,
+
             14px
+
         );
 
+
+
     font-weight: 600;
+
 }
+
+
+
 
 
 .first-subsection {
+
     margin-top: 0;
+
 }
+
+
+
 
 
 .muted {
+
     color: var(--muted);
+
 }
+
+
+
 
 
 /* ==========================================================
+
    15. COMPACT LISTS
+
 ========================================================== */
 
+
+
 .compact-list {
+
     width: 100%;
+
+    align-items: center;
+
 }
+
+
+
 
 
 .compact-row {
+
     width: 100%;
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         clamp(
+
             115px,
+
             15vw,
-            145px
+
+            160px
+
         )
+
         minmax(0, 1fr);
 
+
+
     gap:
+
         clamp(
+
             12px,
+
             2vw,
+
             18px
+
         );
+
+
 
     padding: 6px 0;
 
+
+
     border-bottom:
+
         1px solid
+
         color-mix(
+
             in srgb,
+
             var(--line) 72%,
+
             transparent
+
         );
+
 }
+
+
+
 
 
 .compact-row:last-child {
+
     border-bottom: 0;
+
 }
+
+
+
 
 
 .compact-row time {
+
     color: var(--muted);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size:
+
         clamp(
+
             9px,
+
             .85vw,
+
             10px
+
         );
 
+
+
     line-height: 1.65;
+
 }
+
+
+
 
 
 .compact-row p {
+
     color: var(--ink);
 
+
+
     font-size:
+
         clamp(
+
             11px,
+
             1vw,
+
             12px
+
         );
 
+
+
     line-height: 1.55;
+
 }
+
+
+
 
 
 .news-list .compact-row p {
+
     color: var(--muted);
+
 }
+
+
+
 
 
 .news-list .compact-row p strong {
+
     color: var(--ink);
+
 }
+
+
+
 
 
 /* ==========================================================
+
    16. EMPLOYMENT
+
 ========================================================== */
 
+
+
 .employment-list {
+
     width: 100%;
 
+
+
     display: flex;
+
     flex-direction: column;
+
 }
+
+
+
 
 
 .employment-row {
+
     width: 100%;
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         clamp(
+
             115px,
+
             15vw,
-            145px
+
+            160px
+
         )
+
         minmax(0, 1fr);
 
+
+
     gap:
+
         clamp(
+
             12px,
+
             2vw,
+
             18px
+
         );
+
+
 
     padding: 6px 0;
 
+
+
     border-bottom:
+
         1px solid
+
         color-mix(
+
             in srgb,
+
             var(--line) 72%,
+
             transparent
+
         );
+
+
 
     font-size:
+
         clamp(
+
             11px,
+
             1vw,
+
             12px
+
         );
 
+
+
     line-height: 1.5;
+
 }
+
+
+
 
 
 .employment-date {
+
     color: var(--muted);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size:
+
         clamp(
+
             9px,
+
             .85vw,
+
             10px
+
         );
+
 }
+
+
+
 
 
 .employment-row strong {
+
     font-weight: 600;
+
 }
 
 
+
+
+
 /* ==========================================================
+
    17. PUBLICATION FILTER HEADER
+
 ========================================================== */
 
+
+
 .heading-with-tools {
+
     width: 100%;
+
+
 
     display: flex;
 
+
+
     align-items: flex-end;
+
     justify-content: space-between;
+
+
 
     gap: 15px;
 
+
+
     margin-bottom: 15px;
 
+
+
     border-bottom:
+
         1px solid
+
         var(--ink);
+
 }
+
+
+
 
 
 .heading-with-tools .academic-heading {
+
     flex: 1;
+
+
 
     margin: 0;
 
+
+
     border: 0;
+
 }
+
+
+
 
 
 .publication-filters {
+
     display: flex;
+
+
 
     align-items: center;
 
+
+
     flex-wrap: wrap;
+
+
 
     gap: 4px;
 
+
+
     padding-bottom: 5px;
+
 }
+
+
+
 
 
 .pub-filter {
+
     min-height: 28px;
+
+
 
     padding: 3px 6px;
 
+
+
     border: 0;
+
+
 
     background: transparent;
 
+
+
     color: var(--muted);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
+
+
 
     font-size: 9px;
 
+
+
     cursor: pointer;
+
 }
+
+
+
 
 
 .pub-filter:hover,
+
 .pub-filter.active {
+
     color: var(--burgundy);
 
+
+
     text-decoration: underline;
+
     text-underline-offset: 3px;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    18. PUBLICATIONS
+
 ========================================================== */
 
+
+
 .publication-year-group +
+
 .publication-year-group {
+
     margin-top: 20px;
+
 }
+
+
+
 
 
 .year-heading {
+
     margin:
+
         0 0 5px;
 
+
+
     font-size:
+
         clamp(
+
             13px,
+
             1.2vw,
+
             14px
+
         );
 
+
+
     font-weight: 700;
+
 }
+
+
+
 
 
 .publication-item {
+
     width: 100%;
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         clamp(
+
             120px,
+
             17vw,
+
             150px
+
         )
+
         minmax(0, 1fr);
 
+
+
     gap:
+
         clamp(
+
             14px,
+
             2vw,
+
             20px
+
         );
 
+
+
     padding:
+
         clamp(
+
             10px,
+
             1.4vw,
+
             14px
+
         )
+
         0;
 
+
+
     border-bottom:
+
         1px solid
+
         var(--line);
+
 }
+
+
+
 
 
 .publication-item.hidden {
+
     display: none;
+
 }
+
+
+
 
 
 .publication-thumb {
+
     width: 100%;
+
+
 
     aspect-ratio: 1.82 / 1;
 
+
+
     overflow: hidden;
 
+
+
     border:
+
         1px solid
+
         var(--line);
 
+
+
     background: var(--paper);
+
 }
+
+
+
 
 
 .image-thumb img {
+
     width: 100%;
+
     height: 100%;
 
+
+
     object-fit: cover;
+
 }
+
+
+
 
 
 .text-thumb {
+
     display: grid;
+
+
 
     place-items: center;
 
+
+
     background: var(--surface);
+
 }
+
+
+
 
 
 .text-thumb span {
+
     color: var(--faint);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size:
+
         clamp(
+
             11px,
+
             1.2vw,
+
             14px
+
         );
 
+
+
     letter-spacing: .08em;
+
 }
+
+
+
 
 
 .publication-copy {
+
     min-width: 0;
 
+
+
     padding-top: 1px;
+
 }
+
+
+
 
 
 .publication-copy h3 {
+
     margin:
+
         0 0 4px;
 
+
+
     font-size:
+
         clamp(
+
             11px,
+
             1.1vw,
+
             13px
+
         );
+
+
 
     font-weight: 700;
 
+
+
     line-height: 1.4;
+
 }
+
+
+
 
 
 .authors,
+
 .pub-meta {
+
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             9px,
+
             .9vw,
+
             10px
+
         );
 
+
+
     line-height: 1.5;
+
 }
+
+
+
 
 
 .authors strong {
+
     color: var(--burgundy);
 
+
+
     font-weight: 600;
+
 }
+
+
+
 
 
 .pub-links {
+
     margin-top: 5px;
+
+
 
     display: flex;
 
+
+
     flex-wrap: wrap;
 
+
+
     gap: 10px;
+
 }
+
+
+
 
 
 .pub-links a,
+
 .more-link {
+
     color: var(--muted);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size: 9px;
+
 }
+
+
+
 
 
 .pub-links a:hover,
+
 .more-link:hover {
+
     color: var(--burgundy);
+
 }
+
+
+
 
 
 .more-link {
+
     display: inline-block;
 
+
+
     margin-top: 14px;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    19. PROJECTS
+
 ========================================================== */
 
+
+
 .research-projects {
+
     width: 100%;
 
+
+
     display: flex;
+
     flex-direction: column;
+
 }
+
+
+
 
 
 .research-project {
+
     width: 100%;
+
+
 
     display: grid;
 
+
+
     grid-template-columns:
+
         clamp(
+
             135px,
+
             19vw,
+
             170px
+
         )
+
         minmax(0, 1fr);
 
+
+
     gap:
+
         clamp(
+
             15px,
+
             2.5vw,
+
             22px
+
         );
 
+
+
     padding:
+
         clamp(
+
             11px,
+
             1.5vw,
+
             15px
+
         )
+
         0;
 
+
+
     border-bottom:
+
         1px solid
+
         var(--line);
+
 }
+
+
+
 
 
 .project-thumb {
+
     width: 100%;
+
+
 
     aspect-ratio: 1.7 / 1;
 
+
+
     overflow: hidden;
 
+
+
     border:
+
         1px solid
+
         var(--line);
 
+
+
     background: var(--paper);
+
 }
+
+
+
 
 
 .project-thumb img {
+
     width: 100%;
+
     height: 100%;
 
+
+
     object-fit: cover;
+
 }
+
+
+
 
 
 .project-copy {
+
     min-width: 0;
 
+
+
     padding-top: 1px;
+
 }
+
+
+
 
 
 .project-copy h3 {
+
     margin:
+
         0 0 5px;
+
+
 
     color: var(--ink);
 
+
+
     font-size:
+
         clamp(
+
             12px,
+
             1.1vw,
+
             13px
+
         );
+
+
 
     font-weight: 700;
 
+
+
     line-height: 1.4;
+
 }
+
+
+
 
 
 .project-copy p {
+
     max-width: 650px;
+
+
 
     margin: 0;
 
+
+
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             10px,
+
             1vw,
+
             11px
+
         );
 
+
+
     line-height: 1.58;
+
 }
+
+
+
 
 
 .project-tags {
+
     margin-top: 7px;
+
+
 
     color: var(--burgundy);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size:
+
         clamp(
+
             8px,
+
             .8vw,
+
             9px
+
         );
 
+
+
     line-height: 1.5;
+
 }
+
+
+
 
 
 /* ==========================================================
+
    20. SERVICE
+
 ========================================================== */
 
+
+
 .service-lines {
+
     width: 100%;
 
+
+
     display: flex;
+
     flex-direction: column;
+
 }
+
+
+
 
 
 .service-lines p {
+
     margin: 0;
+
+
 
     padding: 6px 0;
 
+
+
     border-bottom:
+
         1px solid
+
         color-mix(
+
             in srgb,
+
             var(--line) 72%,
+
             transparent
+
         );
+
+
 
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             10px,
+
             1vw,
+
             11px
+
         );
 
+
+
     line-height: 1.58;
+
 }
+
+
+
 
 
 .service-lines strong {
+
     color: var(--ink);
+
 }
+
+
+
 
 
 /* ==========================================================
+
    21. CV
+
 ========================================================== */
 
+
+
 .cv-section {
+
     padding-bottom: 34px;
+
 }
+
+
+
 
 
 .cv-inline {
+
     width: 100%;
+
+
 
     display: flex;
 
+
+
     align-items: center;
+
     justify-content: space-between;
 
+
+
     gap: 24px;
+
 }
+
+
+
 
 
 .cv-inline > p {
+
     max-width: 610px;
+
+
 
     margin: 0;
 
+
+
     color: var(--muted);
 
+
+
     font-size:
+
         clamp(
+
             10px,
+
             1vw,
+
             11px
+
         );
+
 }
+
+
+
 
 
 .cv-inline > div {
+
     display: flex;
+
+
 
     align-items: center;
 
+
+
     flex-wrap: wrap;
+
+
 
     gap: 12px;
 
+
+
     flex-shrink: 0;
+
 }
+
+
+
 
 
 .academic-button {
+
     display: inline-flex;
 
+
+
     align-items: center;
+
     justify-content: center;
+
+
 
     min-height: 34px;
 
+
+
     padding: 4px 12px;
 
+
+
     border:
+
         1px solid
+
         var(--ink);
 
+
+
     background: var(--ink);
+
     color: var(--bg);
+
+
 
     font-size: 10px;
 
+
+
     transition:
+
         background var(--transition),
+
         color var(--transition);
+
 }
+
+
+
 
 
 .academic-button:hover {
+
     background: transparent;
+
     color: var(--ink);
+
 }
+
+
+
 
 
 .text-action {
+
     padding: 6px 0;
+
+
 
     color: var(--muted);
 
+
+
     font-size: 10px;
+
 }
+
+
+
 
 
 .text-action:hover {
+
     color: var(--burgundy);
+
 }
 
 
+
+
+
 /* ==========================================================
+
    22. FOOTER
+
 ========================================================== */
 
+
+
 .academic-footer {
+
     padding:
+
         16px 0
+
         max(
+
             28px,
+
             env(safe-area-inset-bottom)
+
         );
+
+
 
     display: flex;
 
+
+
     align-items: center;
+
     justify-content: center;
+
+
 
     flex-wrap: wrap;
 
+
+
     gap: 16px 30px;
 
+
+
     border-top:
+
         1px solid
+
         var(--line);
+
+
 
     color: var(--faint);
 
+
+
     font-family:
+
         "DM Mono",
+
         monospace;
 
+
+
     font-size: 9px;
+
 }
+
+
+
 
 
 .academic-footer a:hover {
+
     color: var(--burgundy);
+
 }
 
 
+
+
+
 /* ==========================================================
+
    23. LARGE DESKTOP
+
    1440px+
+
 ========================================================== */
+
+
 
 @media (min-width: 1440px) {
 
+
+
     :root {
+
         --sidebar-width: 190px;
+
     }
+
+
+
 
 
     .academic-page {
+
         max-width: 1000px;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding-right:
+
             clamp(
+
                 60px,
+
                 7vw,
+
                 125px
+
             );
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    24. ULTRA-WIDE MONITORS
+
 ========================================================== */
+
+
 
 @media (min-width: 1900px) {
 
+
+
     .landing-main {
+
         max-width: 1700px;
 
+
+
         margin:
+
             0 auto;
+
     }
+
+
+
 
 
     .identity-area {
+
         min-height: 520px;
+
     }
+
+
+
 
 
     .academic-page {
+
         max-width: 1040px;
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    25. LAPTOPS
+
    1024px — 1279px
+
 ========================================================== */
 
+
+
 @media
+
 (min-width: 1024px)
+
 and
+
 (max-width: 1279px) {
 
+
+
     :root {
+
         --sidebar-width: 160px;
+
     }
+
+
+
 
 
     .side-nav {
+
         padding-left: 26px;
+
     }
+
+
+
 
 
     .identity-area {
+
         grid-template-columns:
+
             minmax(0, 1fr)
+
             minmax(260px, 340px);
 
+
+
         gap: 25px;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding-left: 30px;
+
         padding-right: 45px;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             min(
+
                 calc(100% - 50px),
+
                 900px
+
             );
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    26. TABLETS / SMALL LAPTOPS
+
    <= 1023px
+
 ========================================================== */
+
+
 
 @media (max-width: 1023px) {
 
+
+
     :root {
-        --sidebar-width: 145px;
+
+        --sidebar-width: 160px;
+
     }
+
+
+
 
 
     .side-nav {
+
         padding-left: 22px;
+
         padding-right: 12px;
+
     }
+
+
+
 
 
     .side-nav > a,
+
     .side-nav-group a {
+
         font-size: 14px;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding-left: 25px;
+
         padding-right: 35px;
+
     }
+
+
+
 
 
     .identity-area {
+
         grid-template-columns:
+
             minmax(0, 1fr)
+
             minmax(230px, 300px);
 
+
+
         gap: 20px;
+
     }
+
+
+
 
 
     .portrait-area {
+
         min-height: 330px;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             calc(
+
                 100% - 42px
+
             );
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    27. TABLET PORTRAIT + MOBILE
+
    <= 820px
+
 ========================================================== */
+
+
 
 @media (max-width: 820px) {
 
+
+
     :root {
+
         --sidebar-width: 0px;
+
     }
+
+
+
 
 
     /* --------------------------------
+
        Navigation becomes top navigation
+
     -------------------------------- */
 
+
+
     .landing {
+
         display: block;
 
+
+
         min-height: auto;
+
     }
+
+
+
 
 
     .side-nav {
+
         position: sticky;
+
+
 
         top: 0;
 
+
+
         width: 100%;
+
         height: auto;
 
+
+
         padding:
+
             max(
+
                 14px,
+
                 env(safe-area-inset-top)
+
             )
+
             62px
+
             12px
+
             max(
+
                 18px,
+
                 env(safe-area-inset-left)
+
             );
+
+
 
         display: flex;
 
+
+
         flex-direction: row;
 
+
+
         align-items: center;
+
+
 
         justify-content: space-between;
 
+
+
         gap: 14px;
 
+
+
         border-bottom:
+
             1px solid
+
             var(--line);
 
+
+
         background:
+
             color-mix(
+
                 in srgb,
+
                 var(--bg) 96%,
+
                 transparent
+
             );
 
+
+
         backdrop-filter:
+
             blur(12px);
 
+
+
         -webkit-backdrop-filter:
+
             blur(12px);
+
     }
+
+
+
 
 
     .side-nav > a {
+
         margin: 0;
+
+
 
         font-size: 13px;
 
+
+
         flex-shrink: 0;
+
     }
+
+
+
 
 
     .side-nav-group {
+
         min-width: 0;
 
+
+
         display: flex;
+
+
 
         flex-direction: row;
 
+
+
         align-items: center;
+
+
 
         justify-content: flex-end;
 
+
+
         flex-wrap: wrap;
 
+
+
         gap:
+
             4px 12px;
+
     }
+
+
+
 
 
     .side-nav-group a {
+
         font-size: 10px;
+
         line-height: 1.4;
+
     }
 
 
+
+
+
     /* --------------------------------
+
        Theme button
+
     -------------------------------- */
+
+
 
     .theme-toggle {
+
         top:
+
             max(
+
                 10px,
+
                 env(safe-area-inset-top)
+
             );
+
+
 
         right:
+
             max(
+
                 12px,
+
                 env(safe-area-inset-right)
+
             );
 
+
+
         width: 36px;
+
         height: 36px;
+
     }
+
+
+
 
 
     /* --------------------------------
+
        Hero
+
     -------------------------------- */
 
+
+
     .landing-main {
+
         width: 100%;
 
+
+
         padding:
+
             clamp(
+
                 45px,
+
                 8vw,
+
                 65px
+
             )
+
             clamp(
+
                 18px,
+
                 5vw,
+
                 38px
+
             )
+
             65px;
+
     }
+
+
+
 
 
     .identity-area {
+
         min-height: auto;
+
+
 
         display: flex;
 
+
+
         flex-direction: column;
 
+
+
         gap: 28px;
+
     }
+
+
+
 
 
     .identity-center {
+
         order: 1;
 
+
+
         padding: 0;
+
     }
+
+
+
 
 
     .portrait-area {
+
         order: 2;
 
+
+
         width:
+
             min(
+
                 100%,
+
                 390px
+
             );
+
+
 
         min-height: 320px;
 
+
+
         margin: 0 auto;
+
     }
+
+
+
 
 
     .portrait-area::before {
+
         width:
+
             clamp(
+
                 200px,
+
                 48vw,
+
                 265px
+
             );
+
     }
+
+
+
 
 
     .portrait-area img {
+
         max-height:
+
             clamp(
+
                 300px,
+
                 60vw,
+
                 370px
+
             );
+
     }
+
+
+
 
 
     .signature {
+
         width:
+
             clamp(
+
                 115px,
+
                 23vw,
-                145px
+
+                160px
+
             );
+
     }
+
+
+
 
 
     .identity-center h1 {
+
         font-size:
+
             clamp(
+
                 20px,
+
                 4vw,
+
                 24px
+
             );
+
     }
+
+
+
 
 
     .role {
+
         font-size:
+
             clamp(
+
                 12px,
+
                 2.4vw,
+
                 14px
+
             );
+
     }
+
+
+
 
 
     .research-line {
+
         font-size:
+
             clamp(
+
                 11px,
+
                 2.2vw,
+
                 13px
+
             );
+
     }
+
+
+
 
 
     .landing-bio {
+
         margin-top: 30px;
 
+
+
         font-size:
+
             clamp(
+
                 12px,
+
                 2.4vw,
+
                 14px
+
             );
+
     }
+
+
+
 
 
     /* --------------------------------
+
        Content
+
     -------------------------------- */
 
+
+
     .post-landing {
+
         width: 100%;
 
+
+
         margin-left: 0;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             min(
+
                 calc(100% - 36px),
+
                 720px
+
             );
 
+
+
         padding-top: 45px;
+
     }
+
+
+
 
 
     .academic-section {
+
         scroll-margin-top: 80px;
+
     }
+
+
+
 
 
     .heading-with-tools {
+
         align-items: flex-start;
+
+
 
         flex-direction: column;
 
+
+
         gap: 3px;
+
     }
+
+
+
 
 
     .publication-filters {
+
         width: 100%;
 
+
+
         padding:
+
             0 0 6px;
+
     }
+
+
+
 
 
     .compact-row,
+
     .employment-row {
+
         grid-template-columns:
+
             110px
+
             minmax(0, 1fr);
 
+
+
         gap: 12px;
+
     }
+
+
+
 
 
     .publication-item {
+
         grid-template-columns:
+
             125px
+
             minmax(0, 1fr);
+
     }
+
+
+
 
 
     .research-project {
+
         grid-template-columns:
+
             135px
+
             minmax(0, 1fr);
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    28. PHONES
+
    <= 600px
+
 ========================================================== */
+
+
 
 @media (max-width: 600px) {
 
+
+
     .side-nav {
+
         overflow-x: auto;
 
+
+
         justify-content:
+
             flex-start;
+
+
 
         padding-right: 54px;
 
+
+
         scrollbar-width: none;
+
     }
+
+
+
 
 
     .side-nav::-webkit-scrollbar {
+
         display: none;
+
     }
+
+
+
 
 
     .side-nav-group {
+
         flex-wrap: nowrap;
 
+
+
         justify-content:
+
             flex-start;
 
+
+
         flex-shrink: 0;
+
     }
+
+
+
 
 
     .side-nav-group a {
+
         white-space: nowrap;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding:
+
             42px
+
             18px
+
             58px;
+
     }
+
+
+
 
 
     .identity-area {
+
         gap: 22px;
+
     }
+
+
+
 
 
     .portrait-area {
+
         min-height: 285px;
+
     }
+
+
+
 
 
     .portrait-area img {
+
         max-height: 300px;
+
     }
+
+
+
 
 
     .landing-bio {
+
         padding: 0;
+
+
 
         text-align: left;
 
+
+
         line-height: 1.65;
+
     }
+
+
+
 
 
     .affiliation-strip {
+
         width: 100%;
+
+
 
         margin-top: 25px;
 
+
+
         padding:
+
             20px 0 15px;
+
     }
+
+
+
 
 
     .landing-links {
+
         gap:
+
             8px 18px;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             calc(
+
                 100% - 30px
+
             );
 
+
+
         padding-top: 38px;
+
     }
+
+
+
 
 
     .academic-heading {
+
         font-size: 16px;
+
     }
+
+
+
 
 
     /* Dates stack above content */
 
+
+
     .compact-row,
+
     .employment-row {
+
         grid-template-columns: 1fr;
+
+
 
         gap: 1px;
 
+
+
         padding:
+
             8px 0;
+
     }
+
+
+
 
 
     .compact-row time,
+
     .employment-date {
+
         margin-bottom: 1px;
+
     }
+
+
+
 
 
     /* Publications stack */
 
+
+
     .publication-item {
+
         grid-template-columns: 1fr;
+
+
 
         gap: 10px;
 
+
+
         padding:
+
             12px 0;
+
     }
+
+
+
 
 
     .publication-thumb {
+
         width:
+
             min(
+
                 100%,
+
                 300px
+
             );
 
+
+
         aspect-ratio:
+
             16 / 9;
+
     }
+
+
+
 
 
     .publication-copy h3 {
+
         font-size: 12px;
+
     }
+
+
+
 
 
     /* Projects stack */
 
+
+
     .research-project {
+
         grid-template-columns: 1fr;
+
+
 
         gap: 11px;
 
+
+
         padding:
+
             14px 0;
+
     }
+
+
+
 
 
     .project-thumb {
+
         width:
+
             min(
+
                 100%,
+
                 330px
+
             );
 
+
+
         aspect-ratio:
+
             16 / 9;
+
     }
+
+
+
 
 
     .project-copy h3 {
+
         font-size: 12px;
+
     }
+
+
+
 
 
     .project-copy p {
+
         font-size: 10.5px;
+
     }
+
+
+
 
 
     /* CV */
 
+
+
     .cv-inline {
+
         align-items: flex-start;
+
+
 
         flex-direction: column;
 
+
+
         gap: 14px;
+
     }
+
+
+
 
 
     .cv-inline > div {
+
         width: 100%;
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    29. SMALL PHONES
+
    <= 400px
+
 ========================================================== */
+
+
 
 @media (max-width: 400px) {
 
+
+
     .side-nav {
+
         padding-left: 14px;
+
     }
+
+
+
 
 
     .side-nav > a {
+
         font-size: 12px;
+
     }
+
+
+
 
 
     .side-nav-group {
+
         gap: 10px;
+
     }
+
+
+
 
 
     .side-nav-group a {
+
         font-size: 9px;
+
     }
+
+
+
 
 
     .theme-toggle {
+
         width: 34px;
+
         height: 34px;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding-left: 15px;
+
         padding-right: 15px;
+
     }
+
+
+
 
 
     .identity-center h1 {
+
         font-size: 19px;
+
     }
+
+
+
 
 
     .role {
+
         max-width: 310px;
 
+
+
         margin-left: auto;
+
         margin-right: auto;
+
     }
+
+
+
 
 
     .research-line {
+
         max-width: 320px;
+
     }
+
+
+
 
 
     .research-line span {
+
         margin: 0 2px;
+
     }
+
+
+
 
 
     .portrait-area {
+
         min-height: 260px;
+
     }
+
+
+
 
 
     .portrait-area img {
+
         max-height: 275px;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             calc(
+
                 100% - 24px
+
             );
+
     }
+
+
+
 
 
     .publication-thumb,
+
     .project-thumb {
+
         width: 100%;
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    30. VERY SMALL DEVICES
+
    <= 340px
+
 ========================================================== */
+
+
 
 @media (max-width: 340px) {
 
+
+
     .landing-links a {
+
         font-size: 9px;
+
     }
+
+
+
 
 
     .research-line span {
+
         display: none;
+
     }
+
+
+
 
 
     .research-line {
+
         display: flex;
+
+
 
         flex-direction: column;
 
+
+
         gap: 2px;
+
     }
+
+
+
 
 
     .academic-page {
+
         width:
+
             calc(
+
                 100% - 20px
+
             );
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    31. LANDSCAPE PHONES
+
 ========================================================== */
 
+
+
 @media
+
 (max-height: 500px)
+
 and
+
 (orientation: landscape)
+
 and
+
 (max-width: 950px) {
 
+
+
     .side-nav {
+
         position: relative;
+
     }
+
+
+
 
 
     .identity-area {
+
         display: grid;
 
+
+
         grid-template-columns:
+
             minmax(0, 1fr)
+
             minmax(190px, 250px);
 
+
+
         gap: 20px;
+
     }
+
+
+
 
 
     .identity-center {
+
         order: initial;
+
     }
+
+
+
 
 
     .portrait-area {
+
         order: initial;
 
+
+
         min-height: 240px;
+
     }
+
+
+
 
 
     .portrait-area img {
+
         max-height: 245px;
+
     }
+
+
+
 
 
     .portrait-area::before {
+
         width: 180px;
+
     }
+
+
+
 
 
     .landing-main {
+
         padding-top: 30px;
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    32. TOUCH TARGETS
+
 ========================================================== */
+
+
 
 @media (pointer: coarse) {
 
+
+
     .side-nav a,
+
     .landing-links a,
+
     .pub-filter,
+
     .pub-links a,
+
     .text-action {
+
         min-height: 36px;
+
+
 
         display: inline-flex;
 
+
+
         align-items: center;
+
     }
+
+
+
 
 
     .theme-toggle {
+
         min-width: 40px;
+
         min-height: 40px;
+
     }
+
+
 
 }
 
 
+
+
+
 /* ==========================================================
+
    33. REDUCED MOTION
+
 ========================================================== */
+
+
 
 @media (prefers-reduced-motion: reduce) {
 
+
+
     html {
+
         scroll-behavior: auto;
+
     }
+
+
+
 
 
     *,
+
     *::before,
+
     *::after {
+
         scroll-behavior: auto !important;
 
+
+
         animation-duration:
+
             .01ms !important;
+
+
 
         animation-iteration-count:
+
             1 !important;
 
+
+
         transition-duration:
+
             .01ms !important;
+
     }
 
+
+
 }
+
+
+
 
 
 /* ==========================================================
+
    34. PRINT / CV FRIENDLY
+
 ========================================================== */
+
+
 
 @media print {
 
+
+
     .side-nav,
+
     .theme-toggle,
+
     .cursor-dot,
+
     .cursor-ring {
+
         display: none !important;
+
     }
+
+
+
 
 
     body {
+
         background: white;
+
         color: black;
+
     }
+
+
+
 
 
     .landing {
+
         display: block;
+
         min-height: auto;
+
     }
+
+
+
 
 
     .landing-main,
+
     .post-landing {
+
         width: 100%;
+
         margin: 0;
+
         padding-left: 0;
+
         padding-right: 0;
+
     }
+
+
+
 
 
     .academic-page {
+
         width: 100%;
+
     }
+
+
+
 
 
     .academic-section {
+
         break-inside: avoid;
+
     }
 
+
+
 }
+
+/* ==========================================================
+   35. CONSISTENT TYPOGRAPHY + CLEAN SECTION DIVIDERS
+========================================================== */
+
+:root {
+    --section-title-size: 16px;
+    --section-content-size: 13px;
+}
+
+/* ----------------------------------------------------------
+   TITLE TIER
+   Main section titles, subsection titles, year headings,
+   publication titles, and project titles all use one size.
+---------------------------------------------------------- */
+
+.academic-heading,
+.subsection-heading,
+.year-heading,
+.publication-copy h3,
+.project-copy h3 {
+    font-size: var(--section-title-size);
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+/* ----------------------------------------------------------
+   CONTENT TIER
+   Main content, dates, metadata, tags, links, and list text
+   all use one size.
+---------------------------------------------------------- */
+
+.compact-row,
+.compact-row p,
+.compact-row time,
+.news-list .compact-row p,
+.employment-row,
+.employment-date,
+.publication-copy,
+.authors,
+.pub-meta,
+.pub-links a,
+.more-link,
+.project-copy,
+.project-copy p,
+.project-tags,
+.service-lines p,
+.cv-inline > p {
+    font-size: var(--section-content-size);
+    line-height: 1.65;
+}
+
+/* Make compact rows vertically balanced. */
+.compact-row,
+.employment-row {
+    align-items: center;
+}
+
+.compact-row p,
+.compact-row time {
+    margin-top: 0;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+/* ----------------------------------------------------------
+   DIVIDERS
+   Remove horizontal rules between content rows/items.
+   Heading/title rules remain.
+---------------------------------------------------------- */
+
+.compact-row,
+.employment-row,
+.publication-item,
+.research-project,
+.service-lines p {
+    border-bottom: 0;
+}
+
+/* Keep the main section-title divider. */
+.academic-heading {
+    border-bottom: 1px solid var(--ink);
+}
+
+/* Keep subsection-title dividers. */
+.subsection-heading {
+    border-bottom: 1px solid var(--line-dark);
+}
+
+/* Publication heading with filter controls uses its wrapper
+   as the single title divider. */
+.heading-with-tools {
+    border-bottom: 1px solid var(--ink);
+}
+
+.heading-with-tools .academic-heading {
+    border-bottom: 0;
+}
+
+/* No divider beneath year labels. */
+.year-heading {
+    border-bottom: 0;
+}
+
+/* Slightly more breathing room now that row dividers are gone. */
+.compact-row,
+.employment-row {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.publication-item,
+.research-project {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.service-lines p {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Preserve the same two-tier system on tablets and phones. */
+@media (max-width: 820px) {
+    .academic-heading,
+    .subsection-heading,
+    .year-heading,
+    .publication-copy h3,
+    .project-copy h3 {
+        font-size: var(--section-title-size);
+    }
+
+    .compact-row,
+    .compact-row p,
+    .compact-row time,
+    .news-list .compact-row p,
+    .employment-row,
+    .employment-date,
+    .publication-copy,
+    .authors,
+    .pub-meta,
+    .pub-links a,
+    .more-link,
+    .project-copy,
+    .project-copy p,
+    .project-tags,
+    .service-lines p,
+    .cv-inline > p {
+        font-size: var(--section-content-size);
+    }
+}
+
+@media (max-width: 820px) {
+    .academic-heading,
+    .subsection-heading,
+    .year-heading,
+    .publication-copy h3,
+    .project-copy h3 {
+        font-size: var(--section-title-size);
+    }
+
+    .compact-row,
+    .compact-row p,
+    .compact-row time,
+    .news-list .compact-row p,
+    .employment-row,
+    .employment-date,
+    .publication-copy,
+    .authors,
+    .pub-meta,
+    .pub-links a,
+    .more-link,
+    .project-copy,
+    .project-copy p,
+    .project-tags,
+    .service-lines p,
+    .cv-inline > p {
+        font-size: var(--section-content-size);
+    }
+}
+
